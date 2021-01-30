@@ -13,12 +13,10 @@ public class ChildMother {
 		this.mother = mother;
 	}
 	
-	@SuppressWarnings("unused")
 	public Client getMother() {
 		return mother;
 	}
 	
-	@SuppressWarnings("unused")
 	public Client getChild() {
 		return child;
 	}

@@ -195,6 +195,7 @@ public class ErrorTraceController {
 		return "redirect:/errorhandler/index";
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(method = GET, value = "/allerrors",produces = { MediaType.APPLICATION_JSON_VALUE })
 	public <T> ResponseEntity<T> getAllErrors() {
 

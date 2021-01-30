@@ -1,6 +1,6 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.smartregister</groupId>
@@ -13,7 +13,7 @@
 	<url>https://github.com/OpenSRP/opensrp-server-web</url>
 
 	<properties>
-		<jetty.port>9979</jetty.port>
+		<jetty.port>8088</jetty.port>
 		<main.basedir>${project.basedir}</main.basedir>
 		<hibernate-entitymanager.version>5.4.12.Final</hibernate-entitymanager.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -206,15 +206,21 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-	        <groupId>javax.servlet</groupId>
-	        <artifactId>javax.servlet-api</artifactId>
-	        <version>3.0.1</version>
-	        <scope>provided</scope>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -240,7 +246,7 @@
 			<version>2.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/cglib/cglib <dependency> <groupId>cglib</groupId>
+		<!-- https://mvnrepository.com/artifact/cglib/cglib <dependency> <groupId>cglib</groupId> 
 			<artifactId>cglib</artifactId> <version>3.1</version> </dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
@@ -250,25 +256,25 @@
 			<version>${spring.data.redis}</version>
 		</dependency>
 		<dependency>
-		    <groupId>commons-codec</groupId>
-		    <artifactId>commons-codec</artifactId>
-		    <version>1.9</version>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
 		</dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>${spring.security.version}</version>
-        </dependency>
-        <dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-oauth2-resource-server</artifactId>
-		    <version>${spring.security.version}</version>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
 		</dependency>
-		 <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-            <version>${spring.security.oauth.version}</version>
-         </dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-resource-server</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring.security.oauth.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>javax.annotation-api</artifactId>
@@ -284,7 +290,7 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.10.2</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>org.owasp.encoder</groupId>
 			<artifactId>encoder</artifactId>
 			<version>1.2.2</version>
@@ -295,7 +301,7 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!--HTTP session replication dependency-->
+		<!--HTTP session replication dependency -->
 		<dependency>
 			<groupId>org.springframework.session</groupId>
 			<artifactId>spring-session-data-redis</artifactId>
@@ -306,7 +312,7 @@
 			<artifactId>jedis</artifactId>
 			<version>${redis.jedis.version}</version>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.10</version>
@@ -343,10 +349,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-core</artifactId>
-		    <version>3.3.0</version>
-		    <scope>test</scope>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>3.3.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.skyscreamer</groupId>
@@ -431,7 +437,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			 <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<executions>
@@ -488,7 +494,8 @@
 					<stopKey>secret</stopKey>
 					<stopPort>6679</stopPort>
 					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+						<connector
+							implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
 							<port>${jetty.port}</port>
 						</connector>
 						<connector
@@ -647,7 +654,7 @@
 		<profile>
 			<id>basic_auth</id>
 			<activation>
-			<activeByDefault>true</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 				<property>
 					<name>opensrp.auth.type</name>
 					<value>basic_auth</value>
@@ -682,11 +689,11 @@
 				<opensrp.redis.client.profile>lettuce</opensrp.redis.client.profile>
 			</properties>
 			<dependencies>
-			<!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
+				<!-- https://mvnrepository.com/artifact/io.lettuce/lettuce-core -->
 				<dependency>
-				    <groupId>io.lettuce</groupId>
-				    <artifactId>lettuce-core</artifactId>
-				    <version>5.2.2.RELEASE</version>
+					<groupId>io.lettuce</groupId>
+					<artifactId>lettuce-core</artifactId>
+					<version>5.2.2.RELEASE</version>
 				</dependency>
 				<dependency>
 					<groupId>org.springframework</groupId>

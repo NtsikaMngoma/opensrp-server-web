@@ -25,6 +25,7 @@ public class SearchHelperTest {
 		Assert.assertNotNull(list);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testCreateClientListIfEmptyDoesNotModifyParameterList() {
 		Client client = new Client("dummy-base-entity-id");

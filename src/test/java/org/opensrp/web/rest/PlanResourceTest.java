@@ -94,7 +94,8 @@ public class PlanResourceTest extends BaseSecureResourceTest<PlanDefinition> {
 	
 	private ArgumentCaptor<PlanDefinition> argumentCaptor = ArgumentCaptor.forClass(PlanDefinition.class);
 	
-	private Class<ArrayList<String>> listClass = (Class<ArrayList<String>>) (Class) ArrayList.class;
+	@SuppressWarnings("unchecked")
+	private Class<ArrayList<String>> listClass = (Class<ArrayList<String>>) (Class<?>) ArrayList.class;
 	
 	@Captor
 	private ArgumentCaptor<ArrayList<String>> listArgumentCaptor = ArgumentCaptor.forClass(listClass);

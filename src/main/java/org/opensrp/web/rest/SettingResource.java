@@ -9,7 +9,7 @@ import org.opensrp.api.util.TreeNode;
 import org.opensrp.common.AllConstants;
 import org.opensrp.common.AllConstants.BaseEntity;
 import org.opensrp.domain.setting.SettingConfiguration;
-import org.opensrp.repository.postgres.handler.SettingTypeHandler;
+import org.opensrp.repository.postgres.handler.BaseTypeHandler;
 import org.opensrp.search.SettingSearchBean;
 import org.opensrp.service.PhysicalLocationService;
 import org.opensrp.service.SettingService;
@@ -62,10 +62,12 @@ public class SettingResource {
 		return treeNodeHashMap;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET, value = "/sync")
 	public @ResponseBody
 	ResponseEntity<String> findSettingsByVersion(HttpServletRequest request) {
 		JSONObject response = new JSONObject();
+		@SuppressWarnings("rawtypes")
 		ResponseEntity responseEntity;
 
 		HttpHeaders responseHeaders = new HttpHeaders();
@@ -103,8 +105,7 @@ public class SettingResource {
 
 			SettingConfigurations = settingService.findSettings(settingQueryBean, treeNodeHashMap);
 
-			SettingTypeHandler settingTypeHandler = new SettingTypeHandler();
-			String settingsArrayString = settingTypeHandler.mapper.writeValueAsString(SettingConfigurations);
+			String settingsArrayString = BaseTypeHandler.mapper.writeValueAsString(SettingConfigurations);
 
 			responseEntity = new ResponseEntity<>(new JSONArray(settingsArrayString).toString(), responseHeaders,
 					HttpStatus.OK); // todo: why is this conversion to json array necessary?

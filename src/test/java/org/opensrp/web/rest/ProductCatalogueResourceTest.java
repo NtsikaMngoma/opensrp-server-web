@@ -72,6 +72,7 @@ public class ProductCatalogueResourceTest {
 
 	private MockMvc mockMvc;
 
+	@SuppressWarnings("deprecation")
 	protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
 	private String BASE_URL = "/rest/product-catalogue";
@@ -103,6 +104,7 @@ public class ProductCatalogueResourceTest {
 				.andExpect(status().isOk())
 				.andReturn();
 
+		@SuppressWarnings("unchecked")
 		List<ProductCatalogue> response = (List<ProductCatalogue>) result.getModelAndView().getModel().get("productCatalogueList");
 
 		if (response.size() == 0) {
@@ -110,7 +112,7 @@ public class ProductCatalogueResourceTest {
 		}
 
 		assertEquals(response.size(), 1);
-		assertEquals(new Long(1), response.get(0).getUniqueId());
+		assertEquals(Long.valueOf(1), response.get(0).getUniqueId());
 		assertEquals("Scale", response.get(0).getProductName());
 		assertEquals("MT-123", response.get(0).getMaterialNumber());
 	}
@@ -208,7 +210,7 @@ public class ProductCatalogueResourceTest {
 			fail("Test case failed");
 		}
 
-		assertEquals(new Long(1), response.getUniqueId());
+		assertEquals(Long.valueOf(1), response.getUniqueId());
 		assertEquals("Scale", response.getProductName());
 		assertEquals("MT-123", response.getMaterialNumber());
 	}
@@ -271,7 +273,6 @@ public class ProductCatalogueResourceTest {
 
 			@Override
 			public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-				// TODO Auto-generated method stub
 			}
 
 			@Override

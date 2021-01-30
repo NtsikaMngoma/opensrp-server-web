@@ -38,9 +38,12 @@ public class RapidClientResource {
 private ClientService clientService;
 private EventService eventService;
 private PatientService ps;
-private EncounterService es;
+static Map<String, String[]> vs = new HashMap<String, String[]>(){/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-static Map<String, String[]> vs = new HashMap<String, String[]>(){{
+{
 	put("0", new String[]{"bcg"});
 	put("6", new String[]{"penta1", "pcv1", "opv1"});
 	put("10", new String[]{"penta2", "pcv2", "opv2"});
@@ -56,7 +59,6 @@ static Map<String, String[]> vs = new HashMap<String, String[]>(){{
 		this.clientService = clientService;
 		this.eventService = eventService;
 		this.ps = ps;
-		this.es = es;
 	}
 
 	@RequestMapping(value="/cv", method= RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -197,10 +199,11 @@ static Map<String, String[]> vs = new HashMap<String, String[]>(){{
 			return m;
 		}
 		m.put("found", true);
-		String eventType = req.getParameter("eventType");
+		req.getParameter("eventType");
 		m.put("client", c);
 		
-		int age = Weeks.weeksBetween(c.getBirthdate(), new DateTime().now()).getWeeks();
+		new DateTime();
+		int age = Weeks.weeksBetween(c.getBirthdate(), DateTime.now()).getWeeks();
 		m.put("age", age);
 		
 		ArrayList<String> ev = eligibleVaccines(age);
@@ -230,7 +233,7 @@ static Map<String, String[]> vs = new HashMap<String, String[]>(){{
 	                    int p = credentials.indexOf(":");
 	                    if (p != -1) {
 	                        String login = credentials.substring(0, p).trim();
-	                        String password = credentials.substring(p + 1).trim();
+	                        credentials.substring(p + 1).trim();
 
 	                        return login;
 	                    } else {

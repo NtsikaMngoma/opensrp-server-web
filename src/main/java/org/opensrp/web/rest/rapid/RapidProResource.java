@@ -132,7 +132,6 @@ public class RapidProResource {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(headers = { "Accept=application/json" }, method = POST, value = "/update")
 	public ResponseEntity<String> updateMvaccUuid(@RequestBody String data) {
 		Map<String, Object> response = new HashMap<>();

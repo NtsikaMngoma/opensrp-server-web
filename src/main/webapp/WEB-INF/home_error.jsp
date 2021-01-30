@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -25,11 +26,10 @@
 	rel="stylesheet">
 <link href="<c:url value='/resources/css/bootstrap.min.css'/>"
 	rel="stylesheet">
-<link href="<c:url value='/resources/css/style.css'/>" 
-rel="stylesheet">
+<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet">
 
 
-<script type="text/javascript" language="JAVASCRIPT" class="init" >
+<script type="text/javascript" class="init">
 
 var content =new String("<%=request.getContextPath()%>");
 var statusOptions =${statusOptions};
@@ -342,22 +342,18 @@ function getSolvedErrors(){
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2">
-				<img alt="OPENSRP" src="<c:url value='/resources/opensrp_logo.png'/>">
+				<img alt="OPENSRP"
+					src="<c:url value='/resources/opensrp_logo.png'/>">
 			</div>
 			<div class="col-md-8">
-				<h2 class="text-center text-success">Error Handling
-				</h2>
+				<h2 class="text-center text-success">Error Handling</h2>
 			</div>
 			<div class="col-md-2"></div>
 		</div>
 		<div class="row">
-		
-		
-	
 			<div class="col-md-2">
 				<ul class="nav nav-stacked nav-tabs">
-					<li ><a onclick="getAllErrors();">All
-							Errors</a></li>
+					<li><a onclick="getAllErrors();">All Errors</a></li>
 					<li><a onclick="getSolvedErrors();">Solved Errors</a></li>
 					<li><a onclick="getUnSolvedErrors();">Unsolved Errors</a></li>
 					<li class="dropdown pull-right"><a href="#"
@@ -370,7 +366,7 @@ function getSolvedErrors(){
 				</ul>
 			</div>
 			<div class="col-md-10">
-				<table id="errorTable" class="display" cellspacing="0" width="100%">
+				<table id="errorTable" class="display" cellspacing="0" data-width="100%">
 					<thead>
 						<tr>
 							<th>Error Type</th>
@@ -380,7 +376,7 @@ function getSolvedErrors(){
 
 							<th>Status</th>
 							<th>Actions</th>
-							
+
 						</tr>
 					</thead>
 
@@ -392,12 +388,12 @@ function getSolvedErrors(){
 							<th>Date Occurred</th>
 							<th>Status</th>
 							<th>Actions</th>
-							
+
 						</tr>
 					</tfoot>
 				</table>
 				<!--End of the Table  -->
-				
+
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" role="dialog">
 					<div class="modal-dialog">
@@ -406,43 +402,36 @@ function getSolvedErrors(){
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h2 class="modal-title"><b>Error Log</b></h2>
+								<h2 class="modal-title">
+									<b>Error Log</b>
+								</h2>
 							</div>
 							<div class="modal-body">
-							<table style="width:80%"  class="table" >
+								<table style="width: 80%" class="table">
 									<tr>
 
 										<th>Error Type:</th>
-										<td><input type="text" id="errorType" readonly />
-
-										</td>
+										<td><input type="text" id="errorType" readonly /></td>
 									</tr>
 									<tr>
 										<th>Document Type:</th>
-										<td><input type="text" id="documentType" readonly />
-
-										</td>
+										<td><input type="text" id="documentType" readonly /></td>
 									</tr>
 
 									<tr>
 										<th>Date Occurred:</th>
-										<td><input  id="dateOccurred" readonly />
-
-										</td>
+										<td><input id="dateOccurred" readonly /></td>
 									</tr>
 									<tr>
 										<th>StackTrace:</th>
-										<td><textarea  id="stackTrace" rows="20" cols="40" readonly ></textarea>
-
-										</td>
+										<td><textarea id="stackTrace" rows="20" cols="40"
+												readonly></textarea></td>
 									</tr>
 									<tr>
 										<th>URL:</th>
-										<td><input type="text" id="retryURL" readonly />
-
-										</td>
+										<td><input type="text" id="retryURL" readonly /></td>
 									</tr>
-									
+
 
 								</table>
 							</div>
@@ -450,7 +439,8 @@ function getSolvedErrors(){
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Close</button>
 							</div>
-						</div>	<!-- End of Modal content-->
+						</div>
+						<!-- End of Modal content-->
 
 						<!-- 
 			Creating Table for all errors 
@@ -591,13 +581,14 @@ function getSolvedErrors(){
 					</div>
 				</div>
 				<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-8"></div>
+					<div class="col-md-4"></div>
+					<div class="col-md-8"></div>
+				</div>
+			</div>
 		</div>
-	</div>
-
-<%-- 	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+			<%-- 	<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
 	<script src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/scripts.js'/>"></script> --%>
+	</div>
 </body>
 </html>

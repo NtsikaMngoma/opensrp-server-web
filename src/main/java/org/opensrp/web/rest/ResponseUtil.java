@@ -9,7 +9,7 @@ public class ResponseUtil {
 	public static <T> ArrayList<T> prepareDataResponse(ArrayList<T> list, String[] fieldsToIgnore) throws InstantiationException, IllegalAccessException{
 		ArrayList<T> list2 = new ArrayList<T>();
 		for (T object : list) {
-			@SuppressWarnings("unchecked")
+			@SuppressWarnings({ "unchecked", "deprecation" })
 			T targeto = (T) object.getClass().newInstance();
 			BeanUtils.copyProperties(object, targeto, fieldsToIgnore);
 			list2.add(targeto);
@@ -20,6 +20,7 @@ public class ResponseUtil {
 	
 	@SuppressWarnings("unchecked")
 	public static <T> T prepareDataResponse(T object, String[] fieldsToIgnore) throws InstantiationException, IllegalAccessException{
+		@SuppressWarnings("deprecation")
 		T targeto = (T) object.getClass().newInstance();
 		BeanUtils.copyProperties(object, targeto, fieldsToIgnore);
 		

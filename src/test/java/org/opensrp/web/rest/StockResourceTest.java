@@ -275,6 +275,7 @@ public class StockResourceTest {
 				.getStocksByServicePointId(any(StockSearchBean.class));
 		Mockito.verifyNoMoreInteractions(stockService);
 
+		@SuppressWarnings("unchecked")
 		List<Stock> response = (List<Stock>) result.getModelAndView().getModel().get("stockList");
 
 		if (response.size() == 0) {
@@ -282,7 +283,7 @@ public class StockResourceTest {
 		}
 
 		assertEquals(1, response.size());
-		assertEquals(new Long(12345), response.get(0).getIdentifier());
+		assertEquals(Long.valueOf(12345), response.get(0).getIdentifier());
 
 	}
 
@@ -365,7 +366,7 @@ public class StockResourceTest {
 
 			@Override
 			public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-				// TODO Auto-generated method stub
+			
 			}
 
 			@Override

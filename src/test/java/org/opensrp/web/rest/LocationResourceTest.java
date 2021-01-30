@@ -1053,6 +1053,7 @@ public class LocationResourceTest {
 		assertEquals("Start page must be specified", actualString);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testGetStatusOfJob() throws Exception {
 		DHIS2LocationsImportSummary dhis2LocationsImportSummary = new DHIS2LocationsImportSummary();
@@ -1105,6 +1106,7 @@ public class LocationResourceTest {
 
 		verify(locationService).buildLocationHeirarchyWithAncestors(stringCaptor.capture());
 
+		@SuppressWarnings("unchecked")
 		Set<LocationDetail> locationDetailsSet = (Set<LocationDetail>) result.getModelAndView().getModel().get("locationDetailList");
 		assertEquals(6, locationDetailsSet.size());
 		LocationDetail actuallocationDetail = locationDetailsSet.iterator().next();

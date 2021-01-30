@@ -22,7 +22,7 @@ import org.opensrp.common.AllConstants.BaseEntity;
 import org.opensrp.common.AllConstants.Event;
 import org.opensrp.domain.setting.SettingConfiguration;
 import org.opensrp.repository.SettingRepository;
-import org.opensrp.repository.postgres.handler.SettingTypeHandler;
+import org.opensrp.repository.postgres.handler.BaseTypeHandler;
 import org.opensrp.search.SettingSearchBean;
 import org.opensrp.service.PhysicalLocationService;
 import org.opensrp.service.SettingService;
@@ -56,6 +56,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = TestWebContextLoader.class, locations = { "classpath:test-webmvc-config.xml", })
 @ActiveProfiles(profiles = { "jedis", "postgres", "basic_auth" })
@@ -280,8 +281,7 @@ public class SettingResourceTest {
 		SettingResource settingResource = webApplicationContext.getBean(SettingResource.class);
 		settingResource.setSettingService(settingService, openmrsLocationService);
 		String documentId = "settings-document-id-2";
-		SettingTypeHandler settingTypeHandler = new SettingTypeHandler();
-		SettingConfiguration settingConfigurations = settingTypeHandler.mapper
+		SettingConfiguration settingConfigurations = BaseTypeHandler.mapper
 				.readValue(settingJsonUpdate, SettingConfiguration.class);
 		Mockito.when(settingRepository.get("settings-document-id-2")).thenReturn(settingConfigurations);
 		Mockito.doNothing().when(settingRepository).update(any(SettingConfiguration.class));

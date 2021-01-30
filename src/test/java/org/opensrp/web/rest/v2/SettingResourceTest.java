@@ -53,6 +53,7 @@ public class SettingResourceTest {
 	@Autowired
 	protected WebApplicationContext webApplicationContext;
 
+	@SuppressWarnings("deprecation")
 	protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
 	@Mock

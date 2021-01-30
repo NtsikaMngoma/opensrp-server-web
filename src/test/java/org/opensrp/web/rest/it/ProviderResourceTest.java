@@ -30,6 +30,7 @@ public class ProviderResourceTest extends BaseResourceTest {
 		String urlWithQuery = BASE_URL + AUTHENTICATE_URL + query;
 
 		JsonNode actualObj = getCallAsJsonNode(urlWithQuery, "", status().isOk());
+		@SuppressWarnings("unchecked")
 		Map<String, String> response = mapper.treeToValue(actualObj, Map.class);
 
 		assertTrue(response.containsKey("ERROR"));
@@ -42,6 +43,7 @@ public class ProviderResourceTest extends BaseResourceTest {
 		String urlWithQuery = BASE_URL + AUTHENTICATE_URL + query;
 
 		JsonNode actualObj = getCallAsJsonNode(urlWithQuery, "", status().isOk());
+		@SuppressWarnings("unchecked")
 		Map<String, String> response = mapper.treeToValue(actualObj, Map.class);
 
 		assertTrue(response.containsKey("ERROR"));
@@ -54,6 +56,7 @@ public class ProviderResourceTest extends BaseResourceTest {
 		String urlWithQuery = BASE_URL + AUTHENTICATE_URL + query;
 
 		JsonNode actualObj = getCallAsJsonNode(urlWithQuery, "", status().isOk());
+		@SuppressWarnings("unchecked")
 		Map<String, String> response = mapper.treeToValue(actualObj, Map.class);
 
 		assertTrue(response.containsKey("ERROR"));

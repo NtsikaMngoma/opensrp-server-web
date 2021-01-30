@@ -46,6 +46,7 @@ public class IdentifierSourceResourceTest {
 
 	private MockMvc mockMvc;
 
+	@SuppressWarnings("deprecation")
 	protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
 	private String BASE_URL = "/rest/identifier-source";
@@ -61,7 +62,7 @@ public class IdentifierSourceResourceTest {
 
 	@Test
 	public void testGetAll() throws Exception {
-		List<IdentifierSource> identifierSourceList = new ArrayList();
+		List<IdentifierSource> identifierSourceList = new ArrayList<IdentifierSource>();
 		identifierSourceList.add(createIdentifierSource());
 		when(identifierSourceService.findAllIdentifierSources()).thenReturn(identifierSourceList);
 		MvcResult result = mockMvc.perform(get(BASE_URL))

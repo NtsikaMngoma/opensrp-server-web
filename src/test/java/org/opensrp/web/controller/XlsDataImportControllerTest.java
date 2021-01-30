@@ -39,7 +39,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 public class XlsDataImportControllerTest {
@@ -68,14 +67,12 @@ public class XlsDataImportControllerTest {
 
 	protected Pair<User, Authentication> authenticatedUser;
 
-	private MockMvc mockMvc;
-
 	private final String allowedMimeTypes = "application/octet-stream,image/jpeg,image/gif,image/png";
 	
 	@Before
 	public void setUp() {
 		initMocks(this);
-		mockMvc = MockMvcBuilders.standaloneSetup(xlsDataImportController).
+		MockMvcBuilders.standaloneSetup(xlsDataImportController).
 				addFilter(new CrossSiteScriptingPreventionFilter(), "/*").build();
 		ReflectionTestUtils.setField(xlsDataImportController, "allowedMimeTypes", allowedMimeTypes);
 		when(keycloakPrincipal.getKeycloakSecurityContext()).thenReturn(securityContext);

@@ -77,7 +77,7 @@ public class ValidateResourceTest {
 	public void testValidateSyncWithBlankData() throws Exception {
 		when(clientService.getByBaseEntityId(any(String.class))).thenReturn(createClient());
 		when(eventService.findByFormSubmissionId(any(String.class))).thenReturn(createEvent());
-		MvcResult result = mockMvc.perform(post(BASE_URL + "/sync").contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(post(BASE_URL + "/sync").contentType(MediaType.APPLICATION_JSON)
 				.content("".getBytes()))
 				.andExpect(status().isBadRequest()).andReturn();
 	}
@@ -86,7 +86,7 @@ public class ValidateResourceTest {
 	public void testValidateSyncWithWrongData() throws Exception {
 		when(clientService.getByBaseEntityId(any(String.class))).thenReturn(createClient());
 		when(eventService.findByFormSubmissionId(any(String.class))).thenReturn(createEvent());
-		MvcResult result = mockMvc.perform(post(BASE_URL + "/sync").contentType(MediaType.APPLICATION_JSON)
+		mockMvc.perform(post(BASE_URL + "/sync").contentType(MediaType.APPLICATION_JSON)
 				.content(INVALID_JSON.getBytes()))
 				.andExpect(status().isBadRequest()).andReturn();
 	}

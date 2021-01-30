@@ -121,7 +121,7 @@ public class EventResourceTest extends BaseSecureResourceTest<Event> {
         expectedEventIdList.add("event_1");
         expectedEventIdList.add("event_2");
 
-        Pair idsModel = Pair.of(expectedEventIdList, 1234l);
+        Pair<List<String>, Long> idsModel = Pair.of(expectedEventIdList, 1234l);
 
         doReturn(idsModel).when(eventService).findAllIdsByEventType(null, false, 0l, DEFAULT_GET_ALL_IDS_LIMIT, null, null);
 
@@ -347,6 +347,7 @@ public class EventResourceTest extends BaseSecureResourceTest<Event> {
 		assertEquals(eventArgumentCaptor.getValue().getEventType(), "Family Member Registration");
 	}
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testGetAll() throws Exception {
 		List<Event> expectedEvents = new ArrayList<>();
@@ -380,7 +381,8 @@ public class EventResourceTest extends BaseSecureResourceTest<Event> {
 		assertEquals(1, responseJsonObject.optInt("count"));
 	}
     
-    @Test
+    @SuppressWarnings("deprecation")
+	@Test
     public void testGetSync() throws Exception{
 	    List<Event> expectedEvents = new ArrayList<>();
 	    expectedEvents.add(createEvent());
@@ -403,6 +405,7 @@ public class EventResourceTest extends BaseSecureResourceTest<Event> {
 	    assertEquals(actualObj.get("events").size(),1);
     }
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void testPostSync() throws Exception {
 		List<Event> expectedEvents = new ArrayList<>();

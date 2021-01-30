@@ -282,7 +282,7 @@ public class StockResource extends RestResource<Stock> {
 
 	@PostMapping(headers = { "Accept=multipart/form-data" }, produces = {
 			MediaType.APPLICATION_JSON_VALUE }, value = "/import/inventory")
-	public ResponseEntity importInventoryData(@RequestParam("file") MultipartFile file)
+	public ResponseEntity<?> importInventoryData(@RequestParam("file") MultipartFile file)
 			throws IOException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String userName = authentication.getName();
@@ -325,6 +325,7 @@ public class StockResource extends RestResource<Stock> {
 
 	private void generateCSV(CsvBulkImportDataSummary csvBulkImportDataSummary, URI uri) throws IOException {
 				BufferedWriter writer = Files.newBufferedWriter(Paths.get(uri));
+				@SuppressWarnings("resource")
 				CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 			csvPrinter.printRecord("Total Number of Rows in the CSV ", csvBulkImportDataSummary.getNumberOfCsvRows());
 			csvPrinter.printRecord("Rows processed ", csvBulkImportDataSummary.getNumberOfRowsProcessed());

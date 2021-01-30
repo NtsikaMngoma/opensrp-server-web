@@ -21,19 +21,19 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping(value = "/rest/config")
 public class ConfigResource {
-	
+
 	@Autowired
 	private KeycloakDeployment keycloakDeployment;
-	
+
 	@Value("#{opensrp['keycloak.configuration.endpoint']}")
 	protected String keycloakConfigurationURL;
-	
+
 	@GetMapping(value = "/keycloak", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<String> getKeycloakDetails() {
 		String url = MessageFormat.format(keycloakConfigurationURL, keycloakDeployment.getAuthServerBaseUrl(),
-		    keycloakDeployment.getRealm());
+				keycloakDeployment.getRealm());
 		return new RestTemplate().getForEntity(url, String.class);
-		
+
 	}
-	
+
 }

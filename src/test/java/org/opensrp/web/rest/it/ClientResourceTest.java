@@ -22,7 +22,6 @@ import org.junit.Test;
 import org.smartregister.domain.Address;
 import org.smartregister.domain.Client;
 import org.opensrp.repository.postgres.ClientsRepositoryImpl;
-import org.opensrp.service.ClientService;
 import org.opensrp.web.rest.ClientResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.util.NestedServletException;
@@ -35,9 +34,6 @@ public class ClientResourceTest extends BaseResourceTest {
 
 	@Autowired
 	private ClientsRepositoryImpl allClients;
-
-	@Autowired
-	private ClientService clientService;
 
 	@Autowired
 	private ClientResource clientResource;

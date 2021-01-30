@@ -40,7 +40,7 @@ public class ImportBulkDataResource {
 
 	@PostMapping(headers = { "Accept=multipart/form-data" }, produces = {
 			MediaType.APPLICATION_JSON_VALUE }, value = "/organizations")
-	public ResponseEntity importOrganizationsData(@RequestParam("file") MultipartFile file)
+	public ResponseEntity<FileSystemResource> importOrganizationsData(@RequestParam("file") MultipartFile file)
 			throws IOException {
 
 		List<Map<String, String>> csvClients = readCSVFile(file);
@@ -60,7 +60,7 @@ public class ImportBulkDataResource {
 
 	@PostMapping(headers = { "Accept=multipart/form-data" }, produces = {
 			MediaType.APPLICATION_JSON_VALUE }, value = "/practitioners")
-	public ResponseEntity importPractitionersData(@RequestParam("file") MultipartFile file) throws
+	public ResponseEntity<FileSystemResource> importPractitionersData(@RequestParam("file") MultipartFile file) throws
 			IOException {
 
 		List<Map<String, String>> csvClients = readCSVFile(file);
@@ -94,6 +94,7 @@ public class ImportBulkDataResource {
 	private void generateCSV(CsvBulkImportDataSummary csvBulkImportDataSummary, String timestamp) throws IOException {
 
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get(SAMPLE_CSV_FILE + "-" + timestamp));
+		@SuppressWarnings("resource")
 		CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
 		csvPrinter.printRecord("Total Number of Rows in the CSV ", csvBulkImportDataSummary.getNumberOfCsvRows());

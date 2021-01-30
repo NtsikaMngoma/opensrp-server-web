@@ -67,6 +67,7 @@ public class ReportResourceTest {
 
 	@Test
 	public void testSaveWithException() throws Exception {
+		@SuppressWarnings("unused")
 		MvcResult result = mockMvc.perform(post(BASE_URL + "/add").content("".getBytes()))
 				.andExpect(status().isBadRequest()).andReturn();
 	}

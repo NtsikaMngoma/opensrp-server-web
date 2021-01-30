@@ -46,7 +46,7 @@ public class SwaggerConfigTest {
         when(swaggerConfig.securityContext()).thenReturn(createTestSecurityContext());
         Docket docket = swaggerConfig.api();
         assertNotNull(docket);
-        assertEquals(docket.getDocumentationType(), DocumentationType.SWAGGER_2.SWAGGER_2);
+        assertEquals(docket.getDocumentationType(), DocumentationType.SWAGGER_2);
         assertNotNull(docket.select());
     }
 
@@ -76,7 +76,7 @@ public class SwaggerConfigTest {
     }
 
     private Docket createTestDocket() {
-        return new Docket(DocumentationType.SWAGGER_2.SWAGGER_2)
+        return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .build()

@@ -53,6 +53,7 @@ public class ErrorTraceControllerIntegrationTest extends BaseResourceTest {
 
 		ModelAndView modelAndView = mapper.treeToValue(returnedObject, ModelAndView.class);
 		Map<String, Object> actualModel = modelAndView.getModelMap();
+		@SuppressWarnings("unchecked")
 		List<String> actualStatusOptions = mapper
 				.treeToValue(mapper.readTree((String) actualModel.get("statusOptions")), List.class);
 		assertEquals("home_error", modelAndView.getViewName());
@@ -128,6 +129,7 @@ public class ErrorTraceControllerIntegrationTest extends BaseResourceTest {
 		String url = BASE_URL + "/getstatusoptions";
 
 		JsonNode returnedObject = getCallAsJsonNode(url, "", status().isOk());
+		@SuppressWarnings("unchecked")
 		List<String> actualStatusOptions = mapper.treeToValue(returnedObject, List.class);
 
 		assertEquals(errorTraceForm.getStatusOptions(), actualStatusOptions);

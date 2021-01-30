@@ -14,7 +14,6 @@ import org.smartregister.domain.Address;
 import org.smartregister.domain.Client;
 import org.opensrp.repository.postgres.ClientsRepositoryImpl;
 import org.opensrp.repository.postgres.EventsRepositoryImpl;
-import org.opensrp.web.rest.SearchResource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -38,9 +37,6 @@ public class SearchResourceTest extends BaseResourceTest {
 	public static final String ATTRIBUTES_VALUE = "value";
 
 	public static final String FEMALE = "female";
-
-	@Autowired
-	private SearchResource searchResource;
 
 	@Autowired
 	private ClientsRepositoryImpl allClients;
@@ -110,7 +106,7 @@ public class SearchResourceTest extends BaseResourceTest {
 
 	@Test
 	public void canNotSearchIfAnyNamePortionHasCamelCaseLetter() throws Exception {
-		Client expectedClient = createOneSearchableClient();
+		createOneSearchableClient();
 
 		String searchQuery = "lastName=" + LAST_NAME;
 		JsonNode actualObj = searchClient(searchQuery);

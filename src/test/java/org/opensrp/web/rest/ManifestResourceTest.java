@@ -178,7 +178,7 @@ public class ManifestResourceTest extends BaseResourceTest<Manifest> {
         existingManifest.setAppId("org.smartregister.anc");
         existingManifest.setAppVersion("3.4.2");
         existingManifest.setJson(existingManifestJson);
-        List manifestList = new ArrayList<Manifest>();
+        List<Manifest> manifestList = new ArrayList<Manifest>();
         manifestList.add(existingManifest);
 
         String formVersion = FormConfigUtils.getFormsVersion(manifestJsonOnlyValue);
@@ -205,7 +205,7 @@ public class ManifestResourceTest extends BaseResourceTest<Manifest> {
         existingManifest.setAppId("org.smartregister.anc");
         existingManifest.setAppVersion("3.4.2");
         existingManifest.setJson(existingManifestJson);
-        List manifestList = new ArrayList<Manifest>();
+        List<Manifest> manifestList = new ArrayList<Manifest>();
         manifestList.add(existingManifest);
 
         doReturn(manifestList).when(manifestService).getAllManifest(1);
@@ -229,7 +229,8 @@ public class ManifestResourceTest extends BaseResourceTest<Manifest> {
 
     @Test
     public void testBatchSaveShouldBaseSaveManifests() throws Exception {
-        ArgumentCaptor<List<Manifest>> manifestListArgumentCaptor = ArgumentCaptor.forClass(List.class);
+        @SuppressWarnings("unchecked")
+		ArgumentCaptor<List<Manifest>> manifestListArgumentCaptor = ArgumentCaptor.forClass(List.class);
         doReturn(new HashSet<String>()).when(manifestService).saveManifests(any());
 
         ArrayList<Manifest> manifests = new ArrayList<>();

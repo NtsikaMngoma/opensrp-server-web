@@ -26,7 +26,12 @@ public class ChildImmunizationFields {
         public static final String PENTAVALENT_1_VALUE = "pentavalent_1";
         public static final String PENTAVALENT_2_VALUE = "pentavalent_2";
         public static final String PENTAVALENT_3_VALUE = "pentavalent_3";
-        public static final ArrayList<String> IMMUNIZATIONS_VALUE_LIST = new ArrayList<String>() {{
+        public static final ArrayList<String> IMMUNIZATIONS_VALUE_LIST = new ArrayList<String>() {/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		{
             add(BCG_VALUE);
             add(PENTAVALENT_1_VALUE);
             add(PENTAVALENT_2_VALUE);

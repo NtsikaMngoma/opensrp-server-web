@@ -37,7 +37,8 @@ public class GlobalExceptionHandlerTest {
 
     private MockMvc mockMvc;
 
-    protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
+    @SuppressWarnings("deprecation")
+	protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
     private String BASE_URL = "/rest/campaign/";
     private String MESSAGE = "The server encountered an error processing the request.";

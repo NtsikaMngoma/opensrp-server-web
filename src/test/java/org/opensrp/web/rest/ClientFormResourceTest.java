@@ -66,7 +66,8 @@ public class ClientFormResourceTest {
 
     @Autowired
     protected WebApplicationContext webApplicationContext;
-    protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
+    @SuppressWarnings("deprecation")
+	protected ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
     private MockMvc mockMvc;
     private ClientFormService clientFormService;
     private ManifestService manifestService;
@@ -699,7 +700,8 @@ public class ClientFormResourceTest {
         assertEquals("File content error:", errorMessage.substring(0, 19));
     }
 
-    @Test
+    @SuppressWarnings("deprecation")
+	@Test
     public void testAddClientFormWhenGivenJSONWithMissingFieldsShouldReturn400() throws Exception {
         String formIdentifier = "opd/reg.json";
         String formVersion = "0.1.1";

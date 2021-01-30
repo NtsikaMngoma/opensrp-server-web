@@ -340,7 +340,12 @@ public class ClientResourceTest {
 		client.setLastName("Odinga");
 		client.setId("1");
 		client.setDateCreated(new DateTime());
-		client.setRelationships(new HashMap<>() {{
+		client.setRelationships(new HashMap<>() {/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		{
 			put("mother", Collections.singletonList("client-rel-base-entity-id"));
 		}});
 		expected.add(client);
@@ -387,7 +392,12 @@ public class ClientResourceTest {
 		client.setLastName("Odinga");
 		client.setId("1");
 		client.setDateCreated(new DateTime());
-		client.setRelationships(new HashMap<>() {{
+		client.setRelationships(new HashMap<>() {/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+		{
 			put("mother", Collections.singletonList("client-rel-base-entity-id"));
 		}});
 		when(clientService.findByRelationshipIdAndType("mother", "client-rel-base-entity-id"))

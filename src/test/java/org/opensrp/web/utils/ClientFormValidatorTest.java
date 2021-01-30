@@ -131,7 +131,8 @@ public class ClientFormValidatorTest {
                 .when(clientFormService).getMostRecentFormValidator(formIdentifier);
 
 
-        ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
+        @SuppressWarnings("deprecation")
+		ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -152,7 +153,8 @@ public class ClientFormValidatorTest {
                 .when(clientFormService).getMostRecentFormValidator(formIdentifier);
 
 
-        ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
+        @SuppressWarnings("deprecation")
+		ObjectMapper mapper = new ObjectMapper().enableDefaultTyping();
 
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
